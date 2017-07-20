@@ -70,13 +70,21 @@ public class Constants {
     public static final int STAGE_SUB_CAT1_PERSON_3 = 18;
     public static final int STAGE_SUB_CAT2_PERSON_3 = 19;
     public static final int STAGE_SUB_CAT3_PERSON_3 = 20;
+    public static final int STAGE_SERVICE_PERSON_4 = 21;
+    public static final int STAGE_SUB_CAT1_PERSON_4 = 22;
+    public static final int STAGE_SUB_CAT2_PERSON_4 = 23;
+    public static final int STAGE_SUB_CAT3_PERSON_4 = 24;
+    public static final int STAGE_SERVICE_PERSON_5 = 25;
+    public static final int STAGE_SUB_CAT1_PERSON_5 = 26;
+    public static final int STAGE_SUB_CAT2_PERSON_5 = 27;
+    public static final int STAGE_SUB_CAT3_PERSON_5 = 28;
 
 
     public static final int STAGE_PERSON_1 = 213;
     public static final int STAGE_PERSON_2 = 214;
     public static final int STAGE_PERSON_3 = 215;
-    public static final int STAGE_PERSON_4 = 214;
-    public static final int STAGE_PERSON_5 = 215;
+    public static final int STAGE_PERSON_4 = 216;
+    public static final int STAGE_PERSON_5 = 217;
 
 
 }

@@ -58,6 +58,8 @@ public class SearchResultModel {
         @SerializedName("step_4_name")
         public String step_4_name;
 
+        @SerializedName("step_4_id")
+        public String step_4_id;
         @SerializedName("step_5_id")
         public String step_5_id;
 

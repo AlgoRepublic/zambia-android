@@ -56,7 +56,7 @@ public class GuidelinesFragment extends BaseFragment implements IGuidelineCheckL
 
     private void setToolBar() throws NullPointerException {
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Consolidated Guidelines</font>"));
+        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Consolidated guidelines</font>"));
     }
 
     @Nullable

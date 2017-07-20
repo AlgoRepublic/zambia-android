@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,8 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
     private View view;
     private SearchCriteriaModel searchCriteriaModel;
     ArrayList<SearchCriteriaModel.Criteria> servicesList, subCatList, subCat2List, subCat3List,
-            servicesListPerson2, subCatListPerson2, subCat2ListPerson2, subCat3ListPerson2;
+            servicesListPerson2, subCatListPerson2, subCat2ListPerson2, subCat3ListPerson2,
+            servicesListPerson3, subCatListPerson3, subCat2ListPerson3, subCat3ListPerson3;
     private ImageView ivPerson1, ivPerson2, ivPerson3, ivPerson4, ivPerson5;
     private Button btnNext, btnPrev, btnSearch;
     private Button btnPerson1, btnPerson2, btnPerson3, btnPerson4, btnPerson5;
@@ -56,7 +58,7 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
             tvServicesPerson2, tvSubCat1Person2, tvSubCat2Person2, tvSubCat3Person2,
             tvServicesPerson3, tvSubCat1Person3, tvSubCat2Person3, tvSubCat3Person3;
     private LinearLayout llPerson1, llPerson2, llPerson3, llPerson4, llPerson5;
-    private int perviousTabCount;
+    private int perviousTabCount, perviousTabCountPerson2, perviousTabCountPerson3, perviousTabCountPerson4, perviousTabCountPerson5;
     private ArrayList<ArrayList<String>> queryList = new ArrayList<>();
     private ArrayList<String> person1List = new ArrayList<>();
     private ArrayList<String> person2List = new ArrayList<>();
@@ -70,18 +72,10 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        try {
-            setToolBar();
-        } catch (NullPointerException ex) {
-            ex.printStackTrace();
-        }
+
         super.onCreate(savedInstanceState);
     }
 
-    private void setToolBar() throws NullPointerException {
-        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Advance Search</font>"));
-    }
 
     @Nullable
     @Override
@@ -186,84 +180,108 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
 
 
     private void setServiceSpinner() {
-        tvServices.setText(servicesList.get(0).questionText);
+        String upperString = servicesList.get(0).questionText.substring(0, 1).toUpperCase() + servicesList.get(0).questionText.substring(1);
+        tvServices.setText(Html.fromHtml(upperString));
+        tvServices.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, servicesList);
         spServices.setAdapter(serviceAdapter);
         spServices.setOnItemSelectedListener(this);
     }
 
     private void setSubCatSpinner() {
-        tvSubCat1.setText(subCatList.get(0).questionText);
+        String upperString = subCatList.get(0).questionText.substring(0, 1).toUpperCase() + subCatList.get(0).questionText.substring(1);
+        tvSubCat1.setText(Html.fromHtml(upperString));
+        tvSubCat1.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, subCatList);
         spSubCat1.setAdapter(serviceAdapter);
         spSubCat1.setOnItemSelectedListener(this);
     }
 
     private void setSubCat2Spinner() {
-        tvSubCat2.setText(subCat2List.get(0).questionText);
+        String upperString = subCat2List.get(0).questionText.substring(0, 1).toUpperCase() + subCat2List.get(0).questionText.substring(1);
+        tvSubCat2.setText(Html.fromHtml(upperString));
+        tvSubCat2.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, subCat2List);
         spSubCat2.setAdapter(serviceAdapter);
         spSubCat2.setOnItemSelectedListener(this);
     }
 
     private void setSubCat3Spinner() {
-        tvSubCat3.setText(subCat3List.get(0).questionText);
+        String upperString = subCat3List.get(0).questionText.substring(0, 1).toUpperCase() + subCat3List.get(0).questionText.substring(1);
+        tvSubCat3.setText(Html.fromHtml(upperString));
+        tvSubCat3.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, subCat3List);
         spSubCat3.setAdapter(serviceAdapter);
         spSubCat3.setOnItemSelectedListener(this);
     }
 
     private void setServiceSpinnerPerson2() {
-        tvServicesPerson2.setText(servicesList.get(0).questionText);
+        String upperString = servicesList.get(0).questionText.substring(0, 1).toUpperCase() + servicesList.get(0).questionText.substring(1);
+        tvServicesPerson2.setText(Html.fromHtml(upperString));
+        tvServicesPerson2.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, servicesList);
         spServicesPerson2.setAdapter(serviceAdapter);
         spServicesPerson2.setOnItemSelectedListener(this);
     }
 
     private void setSubCatSpinnerPerson2() {
-        tvSubCat1Person2.setText(subCatList.get(0).questionText);
+        String upperString = subCatList.get(0).questionText.substring(0, 1).toUpperCase() + subCatList.get(0).questionText.substring(1);
+        tvSubCat1Person2.setText(Html.fromHtml(upperString));
+        tvSubCat1Person2.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, subCatList);
         spSubCat1Person2.setAdapter(serviceAdapter);
         spSubCat1Person2.setOnItemSelectedListener(this);
     }
 
     private void setSubCat2SpinnerPerson2() {
-        tvSubCat2Person2.setText(subCat2List.get(0).questionText);
+        String upperString = subCat2List.get(0).questionText.substring(0, 1).toUpperCase() + subCat2List.get(0).questionText.substring(1);
+        tvSubCat2Person2.setText(Html.fromHtml(upperString));
+        tvSubCat2Person2.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, subCat2List);
         spSubCat2Person2.setAdapter(serviceAdapter);
         spSubCat2Person2.setOnItemSelectedListener(this);
     }
 
     private void setSubCat3SpinnerPerson2() {
-        tvSubCat3Person2.setText(subCat3List.get(0).questionText);
+        String upperString = subCat3List.get(0).questionText.substring(0, 1).toUpperCase() + subCat3List.get(0).questionText.substring(1);
+        tvSubCat3Person2.setText(Html.fromHtml(upperString));
+        tvSubCat3Person2.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, subCat3List);
         spSubCat3Person2.setAdapter(serviceAdapter);
         spSubCat3Person2.setOnItemSelectedListener(this);
     }
 
     private void setServiceSpinnerPerson3() {
-        tvServicesPerson3.setText(servicesList.get(0).questionText);
+        String upperString = subCat3List.get(0).questionText.substring(0, 1).toUpperCase() + subCat3List.get(0).questionText.substring(1);
+        tvServicesPerson3.setText(Html.fromHtml(upperString));
+        tvServicesPerson3.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, servicesList);
         spServicesPerson3.setAdapter(serviceAdapter);
         spServicesPerson3.setOnItemSelectedListener(this);
     }
 
     private void setSubCatSpinnerPerson3() {
-        tvSubCat1Person3.setText(subCatList.get(0).questionText);
+        String upperString = subCatList.get(0).questionText.substring(0, 1).toUpperCase() + subCatList.get(0).questionText.substring(1);
+        tvSubCat1Person3.setText(Html.fromHtml(upperString));
+        tvSubCat1Person3.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, subCatList);
         spSubCat1Person3.setAdapter(serviceAdapter);
         spSubCat1Person3.setOnItemSelectedListener(this);
     }
 
     private void setSubCat2SpinnerPerson3() {
-        tvSubCat2Person3.setText(subCat2List.get(0).questionText);
+        String upperString = subCat2List.get(0).questionText.substring(0, 1).toUpperCase() + subCat2List.get(0).questionText.substring(1);
+        tvSubCat2Person3.setText(Html.fromHtml(upperString));
+        tvSubCat2Person3.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, subCat2List);
         spSubCat2Person3.setAdapter(serviceAdapter);
         spSubCat2Person3.setOnItemSelectedListener(this);
     }
 
     private void setSubCat3SpinnerPerson3() {
-        tvSubCat3Person3.setText(subCat3List.get(0).questionText);
+        String upperString = subCat3List.get(0).questionText.substring(0, 1).toUpperCase() + subCat3List.get(0).questionText.substring(1);
+        tvSubCat3Person3.setText(Html.fromHtml(upperString));
+        tvSubCat3Person3.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         serviceAdapter = new ServiceSpinnerAdapter(getActivity(), R.layout.service_item, subCat3List);
         spSubCat3Person3.setAdapter(serviceAdapter);
         spSubCat3Person3.setOnItemSelectedListener(this);
@@ -423,7 +441,7 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
             case Constants.STAGE_PERSON_2:
                 gotoSecondTab();
                 count = Constants.STAGE_SERVICE_PERSON_2;
-                perviousTabCount = Constants.STAGE_SUB_CAT2;
+                perviousTabCount = Constants.STAGE_PERSON_2;
                 break;
 
 
@@ -433,9 +451,9 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                     showSubCatPerson2();
                     count = Constants.STAGE_SUB_CAT1_PERSON_2;
                 } else {
-                    gotoSecondTab();
-                    count = Constants.STAGE_SERVICE_PERSON_2;
-                    perviousTabCount = Constants.STAGE_SERVICE;
+                    gotoThirdTab();
+                    count = Constants.STAGE_SERVICE_PERSON_3;
+                    perviousTabCountPerson2 = Constants.STAGE_SERVICE_PERSON_2;
                 }
                 break;
             case Constants.STAGE_SUB_CAT1_PERSON_2:
@@ -445,8 +463,8 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                     count = Constants.STAGE_SUB_CAT2_PERSON_2;
                 } else {
                     gotoSecondTab();
-                    count = Constants.STAGE_SERVICE_PERSON_2;
-                    perviousTabCount = Constants.STAGE_SERVICE;
+                    count = Constants.STAGE_SERVICE_PERSON_3;
+                    perviousTabCountPerson2 = Constants.STAGE_SUB_CAT1_PERSON_2;
                 }
                 break;
             case Constants.STAGE_SUB_CAT2_PERSON_2:
@@ -457,13 +475,13 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                 } else {
                     gotoThirdTab();
                     count = Constants.STAGE_SERVICE_PERSON_3;
-                    perviousTabCount = Constants.STAGE_SERVICE;
+                    perviousTabCountPerson2 = Constants.STAGE_SUB_CAT2_PERSON_2;
                 }
                 break;
             case Constants.STAGE_PERSON_3:
                 gotoThirdTab();
                 count = Constants.STAGE_SERVICE_PERSON_3;
-                perviousTabCount = Constants.STAGE_SUB_CAT2;
+                perviousTabCountPerson2 = Constants.STAGE_PERSON_3;
                 break;
 
 
@@ -473,9 +491,9 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                     showSubCatPerson3();
                     count = Constants.STAGE_SUB_CAT1_PERSON_3;
                 } else {
-                    gotoSecondTab();
+//                    gotoSecondTab();
                     count = Constants.STAGE_SERVICE_PERSON_3;
-                    perviousTabCount = Constants.STAGE_SERVICE;
+                    perviousTabCountPerson3 = Constants.STAGE_SERVICE;
                 }
                 break;
             case Constants.STAGE_SUB_CAT1_PERSON_3:
@@ -484,9 +502,9 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                     showSubCat2Person3();
                     count = Constants.STAGE_SUB_CAT2_PERSON_3;
                 } else {
-                    gotoSecondTab();
+//                    gotoSecondTab();
                     count = Constants.STAGE_SERVICE_PERSON_3;
-                    perviousTabCount = Constants.STAGE_SERVICE;
+                    perviousTabCountPerson3 = Constants.STAGE_SERVICE;
                 }
                 break;
             case Constants.STAGE_SUB_CAT2_PERSON_3:
@@ -495,11 +513,12 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                     showSubCat3Person3();
                     count = Constants.STAGE_SUB_CAT3_PERSON_3;
                 } else {
-                    gotoSecondTab();
+//                    gotoSecondTab();
                     count = Constants.STAGE_SERVICE_PERSON_3;
-                    perviousTabCount = Constants.STAGE_SERVICE;
+                    perviousTabCountPerson3 = Constants.STAGE_SERVICE;
                 }
                 break;
+
 
         }
     }
@@ -539,6 +558,24 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                 showSubCat2Person2();
                 count = Constants.STAGE_SUB_CAT1_PERSON_2;
                 break;
+            case Constants.STAGE_PERSON_3:
+                gotoPervSecondTab();
+                count = perviousTabCountPerson2;
+                break;
+            case Constants.STAGE_SERVICE_PERSON_3:
+                gotoPervSecondTab();
+                count = perviousTabCountPerson2;
+                break;
+            case Constants.STAGE_SUB_CAT1_PERSON_3:
+                hideSubCat2Person3();
+                showSubCatPerson3();
+                count = Constants.STAGE_SERVICE_PERSON_3;
+                break;
+            case Constants.STAGE_SUB_CAT2_PERSON_3:
+                hideSubCat3Person3();
+                showSubCat2Person3();
+                count = Constants.STAGE_SUB_CAT1_PERSON_3;
+                break;
         }
     }
 
@@ -549,22 +586,30 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
         switch (spinner.getId()) {
             case R.id.spServices:
                 serviceParentId = servicesList.get(i).id;
-                person1List.add(0, serviceParentId);
+                if (person1List.size() > 0)
+                    person1List.set(0, serviceParentId);
+                else
+                    person1List.add(0, serviceParentId);
                 Log.d("Id", "id ====>>" + servicesList.get(i).id + "name ====>> " + servicesList.get(i).title + "position ===>>" + i);
                 setSubCat1Spinner(serviceParentId);
                 break;
 
             case R.id.spSubCat1:
                 subCatParentId = subCatList.get(i).id;
-                person1List.add(1, subCatParentId);
+                if (person1List.size() > 1)
+                    person1List.set(1, subCatParentId);
+                else
+                    person1List.add(1, subCatParentId);
                 Log.d("Id", "id ====>>" + subCatList.get(i).id + "name ====>> " + subCatList.get(i).title + "position ===>>" + i);
                 setSubCat2Spinner(subCatParentId);
                 break;
 
             case R.id.spSubCat2:
                 subCatParentId2 = subCat2List.get(i).id;
-                person1List.add(2, subCatParentId2);
-
+                if (person1List.size() > 2)
+                    person1List.set(2, subCatParentId2);
+                else
+                    person1List.add(2, subCatParentId2);
                 Log.d("Id", "id ====>>" + subCat2List.get(i).id + "name ====>> " + subCat2List.get(i).title + "position ===>>" + i);
                 setSubCat3Spinner(subCatParentId2);
                 break;
@@ -573,7 +618,10 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                 subCatParentId3 = subCat3List.get(i).id;
                 Log.d("Id", "id ====>>" + subCat3List.get(i).id + "name ====>> " + subCat3List.get(i).title + "position ===>>" + i);
 //                setSubCat3Spinner(serviceParentId);
-                person1List.add(3, subCatParentId3);
+                if (person1List.size() > 3)
+                    person1List.set(3, subCatParentId3);
+                else
+                    person1List.add(3, subCatParentId3);
                 if (Integer.parseInt(noOfPersons) > 1) {
                     btnNext.setVisibility(View.VISIBLE);
                     btnSearch.setVisibility(View.GONE);
@@ -588,34 +636,43 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
             case R.id.spServicesPerson2:
                 Log.d("Id", "id ====>>" + servicesList.get(i).id + "name ====>> " + servicesList.get(i).title + "position ===>>" + i);
                 setSubCat1SpinnerPerson2(servicesList.get(i).id);
-                person2List.add(0, servicesList.get(i).id);
+                if (person2List.size() > 0)
+                    person2List.set(0, servicesList.get(i).id);
+                else
+                    person2List.add(0, servicesList.get(i).id);
 
                 break;
 
             case R.id.spSubCat1Person2:
                 Log.d("Id", "id ====>>" + subCatList.get(i).id + "name ====>> " + subCatList.get(i).title + "position ===>>" + i);
                 setSubCat2SpinnerPerson2(subCatList.get(i).id);
-                person2List.add(1, subCatList.get(i).id);
+                if (person2List.size() > 1)
+                    person2List.set(1, subCatList.get(i).id);
+                else
+                    person2List.add(1, subCatList.get(i).id);
 
                 break;
 
             case R.id.spSubCat2Person2:
                 Log.d("Id", "id ====>>" + subCat2List.get(i).id + "name ====>> " + subCat2List.get(i).title + "position ===>>" + i);
-                setSubCat3SpinnerPerson2(subCatParentId2);
-                person2List.add(2, subCat2List.get(i).id);
+                setSubCat3SpinnerPerson2(subCat2List.get(i).id);
+                if (person2List.size() > 2)
+                    person2List.set(2, subCat2List.get(i).id);
+                else
+                    person2List.add(2, subCat2List.get(i).id);
                 break;
 
             case R.id.spSubCat3Person2:
                 Log.d("Id", "id ====>>" + subCat3List.get(i).id + "name ====>> " + subCat3List.get(i).title + "position ===>>" + i);
-                person2List.add(3, subCat3List.get(i).id);
-
+                if (person2List.size() > 3)
+                    person2List.set(3, subCat3List.get(i).id);
+                else
+                    person2List.add(3, subCat3List.get(i).id);
 //                setSubCat3Spinner(serviceParentId);
                 if (Integer.parseInt(noOfPersons) > 2) {
                     btnNext.setVisibility(View.VISIBLE);
                     btnSearch.setVisibility(View.GONE);
-                }
-//                    gotoSecondTab();
-                else {
+                } else {
                     btnNext.setVisibility(View.GONE);
                     btnSearch.setVisibility(View.VISIBLE);
                 }
@@ -623,34 +680,42 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
             case R.id.spServicesPerson3:
                 Log.d("Id", "id ====>>" + servicesList.get(i).id + "name ====>> " + servicesList.get(i).title + "position ===>>" + i);
                 setSubCat1SpinnerPerson3(servicesList.get(i).id);
-                person3List.add(0, servicesList.get(i).id);
+                if (person3List.size() > 0)
+                    person3List.set(0, servicesList.get(i).id);
+                else
+                    person3List.add(0, servicesList.get(i).id);
 
                 break;
 
             case R.id.spSubCat1Person3:
                 Log.d("Id", "id ====>>" + subCatList.get(i).id + "name ====>> " + subCatList.get(i).title + "position ===>>" + i);
                 setSubCat2SpinnerPerson3(subCatList.get(i).id);
-                person3List.add(1, subCatList.get(i).id);
-
+                if (person3List.size() > 1)
+                    person3List.set(1, subCatList.get(i).id);
+                else
+                    person3List.add(1, subCatList.get(i).id);
                 break;
-
             case R.id.spSubCat2Person3:
                 Log.d("Id", "id ====>>" + subCat2List.get(i).id + "name ====>> " + subCat2List.get(i).title + "position ===>>" + i);
-                setSubCat3SpinnerPerson3(subCatParentId2);
-                person3List.add(2, subCat2List.get(i).id);
+                setSubCat3SpinnerPerson3(subCat2List.get(i).id);
+                if (person3List.size() > 2)
+                    person3List.set(2, subCat2List.get(i).id);
+                else
+                    person3List.add(2, subCat2List.get(i).id);
                 break;
 
             case R.id.spSubCat3Person3:
                 Log.d("Id", "id ====>>" + subCat3List.get(i).id + "name ====>> " + subCat3List.get(i).title + "position ===>>" + i);
-                person3List.add(3, subCat3List.get(i).id);
+                if (person3List.size() > 3)
+                    person3List.set(3, subCat3List.get(i).id);
+                else
+                    person3List.add(3, subCat3List.get(i).id);
 
 //                setSubCat3Spinner(serviceParentId);
                 if (Integer.parseInt(noOfPersons) > 3) {
                     btnNext.setVisibility(View.VISIBLE);
                     btnSearch.setVisibility(View.GONE);
-                }
-//                    gotoSecondTab();
-                else {
+                } else {
                     btnNext.setVisibility(View.GONE);
                     btnSearch.setVisibility(View.VISIBLE);
                 }
@@ -684,13 +749,41 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
 
     }
 
+    private void gotoFourthTab() {
+//        hidePerson1();
+        llPerson2.setVisibility(View.GONE);
+        showPerson3();
+        setServicesPerson3();
+        btnPerson3.setBackgroundResource(R.drawable.cicle_bg_selected);
+        btnPerson2.setBackgroundResource(R.drawable.circle_bg);
+
+        //        btnPerson1.set
+
+    }
+
     private void gotoFirstTab() {
         showPerson1();
         llPerson2.setVisibility(View.GONE);
 //        hidePerson2();
-        setServicesPerson2();
+//        setServicesPerson2();
+        btnNext.setVisibility(View.VISIBLE);
+        btnSearch.setVisibility(View.GONE);
         btnPerson1.setBackgroundResource(R.drawable.cicle_bg_selected);
         btnPerson2.setBackgroundResource(R.drawable.circle_bg);
+
+        //        btnPerson1.set
+
+    }
+
+    private void gotoPervSecondTab() {
+        showPrePerson2();
+        llPerson3.setVisibility(View.GONE);
+//        hidePerson2();
+//        setServicesPerson2();
+        btnNext.setVisibility(View.VISIBLE);
+        btnSearch.setVisibility(View.GONE);
+        btnPerson2.setBackgroundResource(R.drawable.cicle_bg_selected);
+        btnPerson3.setBackgroundResource(R.drawable.circle_bg);
 
         //        btnPerson1.set
 
@@ -854,13 +947,12 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                     btnNext.setVisibility(View.GONE);
                     btnSearch.setVisibility(View.VISIBLE);
                 }
+
             }
         }
-
     }
 
     private void setSubCat1SpinnerPerson3(String parentId) {
-
         if (searchCriteriaModel != null && searchCriteriaModel.criteriaes.size() > 0) {
             subCatList = new ArrayList<>();
             for (int i = 0; i < searchCriteriaModel.criteriaes.size(); i++) {
@@ -873,7 +965,7 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                 btnNext.setVisibility(View.VISIBLE);
                 btnSearch.setVisibility(View.GONE);
             } else {
-                if (Integer.parseInt(noOfPersons) > 2) {
+                if (Integer.parseInt(noOfPersons) > 3) {
                     btnNext.setVisibility(View.VISIBLE);
                     btnSearch.setVisibility(View.GONE);
                 } else {
@@ -900,7 +992,7 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
                 btnNext.setVisibility(View.VISIBLE);
                 btnSearch.setVisibility(View.GONE);
             } else {
-                if (Integer.parseInt(noOfPersons) > 2) {
+                if (Integer.parseInt(noOfPersons) > 3) {
                     btnNext.setVisibility(View.VISIBLE);
                     btnSearch.setVisibility(View.GONE);
                 } else {
@@ -1278,6 +1370,13 @@ public class AdvanceSearchDetailFragment extends BaseFragment implements View.On
 
     private void showPerson2() {
         TranslateAnimation anim = new TranslateAnimation(1000f, 0f, 0f, 0f);  // might need to review the docs
+        anim.setDuration(300); // set how long you want the animation
+        llPerson2.setAnimation(anim);
+        llPerson2.setVisibility(View.VISIBLE);
+    }
+
+    private void showPrePerson2() {
+        TranslateAnimation anim = new TranslateAnimation(-1000f, 0f, 0f, 0f);  // might need to review the docs
         anim.setDuration(300); // set how long you want the animation
         llPerson2.setAnimation(anim);
         llPerson2.setVisibility(View.VISIBLE);

@@ -66,7 +66,7 @@ public class MedicineDetailsFragment extends BaseFragment implements View.OnClic
 
     private void setToolBar() throws NullPointerException {
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Medicines</font>"));
+        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Medicines information</font>"));
     }
 
 

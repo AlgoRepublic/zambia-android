@@ -46,7 +46,7 @@ public class ContactUsFragment extends BaseFragment implements View.OnClickListe
 
     private void setToolBar() throws NullPointerException {
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Contact Us</font>"));
+        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Contact us</font>"));
     }
 
     @Nullable

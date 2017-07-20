@@ -59,7 +59,7 @@ public class FavouriteFragment extends BaseFragment implements IClickFavourite {
 
     private void setToolBar() throws NullPointerException {
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Favourites</font>"));
+        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Favourite</font>"));
     }
 
     @Nullable

@@ -1,6 +1,7 @@
 package com.algorelpublic.zambia.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -51,8 +52,13 @@ public class AdapterResult extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(RecyclerView.ViewHolder mHolder, final int position) {
         final ItemViewHolder holder = (ItemViewHolder) mHolder;
         try {
-            holder.tvTitle.setText("Person " + (position + 1) + " Result");
-            holder.tvResult.setText(Html.fromHtml(mList.get(position).search_result));
+            holder.tvTitle.setText("The results for Individual " + (position + 1) + "  are: ");
+            holder.tvTitle.setPaintFlags(holder.tvTitle.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            if (mList.get(position) != null && mList.get(position).search_result != null)
+                holder.tvResult.setText(Html.fromHtml(mList.get(position).search_result));
+            else
+                holder.tvResult.setText("No result Found");
+
         } catch (NullPointerException ex) {
             ex.printStackTrace();
         }

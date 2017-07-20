@@ -52,7 +52,7 @@ public class ToolsFragment extends BaseFragment implements View.OnClickListener 
 
     private void setToolBar() throws NullPointerException {
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>FAQS</font>"));
+        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>FAQ's</font>"));
     }
 
     @Nullable

@@ -57,7 +57,7 @@ public class AdvanceSearchFragment extends BaseFragment implements View.OnClickL
 
     private void setToolBar() throws NullPointerException {
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>Advance Search</font>"));
+        appCompatActivity.getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>CONSULTING...</font>"));
     }
 
     @Nullable

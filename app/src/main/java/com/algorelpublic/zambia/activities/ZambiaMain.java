@@ -16,8 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 
 import com.algorelpublic.zambia.R;
+import com.algorelpublic.zambia.Shimmer.Shimmer;
+import com.algorelpublic.zambia.Shimmer.ShimmerRadioButton;
+import com.algorelpublic.zambia.Zambia;
 import com.algorelpublic.zambia.fragments.AboutUsFragment;
 import com.algorelpublic.zambia.fragments.AdvanceSearchFragment;
 import com.algorelpublic.zambia.fragments.ContactUsFragment;
@@ -26,15 +30,20 @@ import com.algorelpublic.zambia.fragments.GuidelinesFragment;
 import com.algorelpublic.zambia.fragments.HelpLineFragment;
 import com.algorelpublic.zambia.fragments.MedicineFragment;
 import com.algorelpublic.zambia.fragments.ToolsFragment;
+import com.algorelpublic.zambia.utils.Constants;
 import com.androidquery.AQuery;
 
-public class ZambiaMain extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ZambiaMain extends BaseActivity implements View.OnClickListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
-    MenuItem medicines, guidelineReview;
     public static CheckBox favouriteCheckBox;
+    private ShimmerRadioButton advance_search, guideline, medicines,
+            about, tools, add_favorite, helpline, contact_us, share, sync;
+
+    private ShimmerRadioButton[] radioButtons = {advance_search, guideline, medicines,
+            about, tools, add_favorite, helpline, contact_us, share, sync};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,73 +84,33 @@ public class ZambiaMain extends BaseActivity implements NavigationView.OnNavigat
 
             }
         });
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        View headerLayout = navigationView.getHeaderView(0);
-        setItems(navigationView);
-        navigationView.setNavigationItemSelectedListener(this);
 
-
+        setItems();
     }
 
-    private void setItems(NavigationView navigationView) {
-        // get menu from navigationView
-        Menu menu = navigationView.getMenu();
-        // find MenuItem you want to change
-        medicines = menu.findItem(R.id.medicines);
-        guidelineReview = menu.findItem(R.id.guideline);
-        guidelineReview.setVisible(false);
+    private void setItems() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View view = navigationView.getHeaderView(0);
+
+        radioButtons[0] = (ShimmerRadioButton) view.findViewById(R.id.advance_search);
+        radioButtons[1] = (ShimmerRadioButton) view.findViewById(R.id.guideline);
+        radioButtons[2] = (ShimmerRadioButton) view.findViewById(R.id.about);
+        radioButtons[3] = (ShimmerRadioButton) view.findViewById(R.id.tools);
+        radioButtons[4] = (ShimmerRadioButton) view.findViewById(R.id.add_favorite);
+        radioButtons[5] = (ShimmerRadioButton) view.findViewById(R.id.medicines);
+        radioButtons[6] = (ShimmerRadioButton) view.findViewById(R.id.helpline);
+        radioButtons[7] = (ShimmerRadioButton) view.findViewById(R.id.contact_us);
+        radioButtons[8] = (ShimmerRadioButton) view.findViewById(R.id.share);
+        radioButtons[9] = (ShimmerRadioButton) view.findViewById(R.id.sync);
+
+        for (int loop = 0; loop < radioButtons.length; loop++) {
+            radioButtons[loop].setOnClickListener(this);
+        }
+        Shimmer shimmer = new Shimmer();
+        shimmer.start(radioButtons[0]);
+        radioButtons[0].setShimmering(true);
         callFragmentWithReplace(R.id.container, GuidelinesFragment.newInstance(), null);
 
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        if (menuItem.isChecked()) menuItem.setChecked(false);
-        else menuItem.setChecked(true);
-
-        //Closing drawer on item click
-        drawer.closeDrawers();
-        clearBackStack();
-        //Check to see which item was being clicked and perform appropriate action
-        switch (menuItem.getItemId()) {
-
-            //Replacing the main content with ContentFragment Which is our Inbox View;
-            case R.id.medicines:
-                callFragmentWithReplace(R.id.container, MedicineFragment.newInstance(), null);
-                guidelineReview.setVisible(true);
-                medicines.setVisible(false);
-                return true;
-            case R.id.guideline:
-                callFragmentWithReplace(R.id.container, GuidelinesFragment.newInstance(), null);
-                guidelineReview.setVisible(false);
-                medicines.setVisible(true);
-
-                return true;
-            case R.id.advance_search:
-                callFragmentWithReplace(R.id.container, AdvanceSearchFragment.newInstance(), null);
-                break;
-            case R.id.tools:
-                callFragmentWithReplace(R.id.container, ToolsFragment.newInstance(), null);
-                break;
-            case R.id.add_favorite:
-                callFragmentWithReplace(R.id.container, FavouriteFragment.newInstance(), null);
-                break;
-            case R.id.helpline:
-                callFragmentWithReplace(R.id.container, HelpLineFragment.newInstance(), null);
-                break;
-            case R.id.contact_us:
-                callFragmentWithReplace(R.id.container, ContactUsFragment.newInstance(), null);
-                break;
-            case R.id.about:
-                callFragmentWithReplace(R.id.container, AboutUsFragment.newInstance(), null);
-                break;
-            case R.id.share:
-                shareIntent();
-                break;
-            case R.id.sync:
-                break;
-        }
-        return false;
     }
 
     private void clearBackStack() {
@@ -150,10 +119,67 @@ public class ZambiaMain extends BaseActivity implements NavigationView.OnNavigat
     }
 
     private void shareIntent() {
-        String message = "Zambia";
+        String message = getString(R.string.app_name);
         Intent share = new Intent(Intent.ACTION_SEND);
         share.setType("text/plain");
         share.putExtra(Intent.EXTRA_TEXT, message);
-        startActivity(Intent.createChooser(share, "Zambia"));
+        startActivity(Intent.createChooser(share, getString(R.string.app_name)));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            //Replacing the main content with ContentFragment Which is our Inbox View;
+            case R.id.medicines:
+                resetMenu(v);
+                callFragmentWithReplace(R.id.container, MedicineFragment.newInstance(), null);
+                break;
+            case R.id.guideline:
+                resetMenu(v);
+                callFragmentWithReplace(R.id.container, GuidelinesFragment.newInstance(), null);
+                break;
+            case R.id.advance_search:
+                resetMenu(v);
+                callFragmentWithReplace(R.id.container, AdvanceSearchFragment.newInstance(), null);
+                break;
+            case R.id.tools:
+                resetMenu(v);
+                callFragmentWithReplace(R.id.container, ToolsFragment.newInstance(), null);
+                break;
+            case R.id.add_favorite:
+                resetMenu(v);
+                callFragmentWithReplace(R.id.container, FavouriteFragment.newInstance(), null);
+                break;
+            case R.id.helpline:
+                resetMenu(v);
+                callFragmentWithReplace(R.id.container, HelpLineFragment.newInstance(), null);
+                break;
+            case R.id.contact_us:
+                resetMenu(v);
+                callFragmentWithReplace(R.id.container, ContactUsFragment.newInstance(), null);
+                break;
+            case R.id.about:
+                resetMenu(v);
+                callFragmentWithReplace(R.id.container, AboutUsFragment.newInstance(), null);
+                break;
+            case R.id.share:
+                resetMenu(v);
+                shareIntent();
+                break;
+            case R.id.sync:
+                resetMenu(v);
+                Zambia.db.putInt(Constants.PROGRESS_LOAD_APP, 0);
+                showDialog();
+                apiHandler.postDelayed(loadAboutUs, API_TIME);
+                break;
+        }
+        drawer.closeDrawers();
+    }
+
+    private void resetMenu(View v) {
+        for (int loop = 0; loop < radioButtons.length; loop++) {
+            radioButtons[loop].setChecked(false);
+        }
+        ((RadioButton) v).setChecked(true);
     }
 }

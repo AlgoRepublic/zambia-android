@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/advance_search"
+            android:checked="false"
+            android:icon="@drawable/ic_active"
+            android:title="Activate consultation" />
+
+        <item
+            android:id="@+id/guideline"
+            android:checked="false"
+            android:icon="@drawable/ic_guideline"
+            android:title="Consolidated guidelines" />
+
+        <item
+            android:id="@+id/medicines"
+            android:checked="false"
+            android:icon="@drawable/ic_medicine"
+            android:title="Medicines information" />
+
+        <item
+            android:id="@+id/about"
+            android:checked="false"
+            android:icon="@drawable/ic_aboutus"
+            android:title="About us" />
+
+        <item
+            android:id="@+id/tools"
+            android:checked="false"
+            android:icon="@drawable/ic_tools"
+            android:title="FAQs" />
+
+        <item
+            android:id="@+id/add_favorite"
+            android:checked="false"
+            android:icon="@drawable/ic_favourite"
+            android:title="Favourite" />
+
+        <item
+            android:id="@+id/helpline"
+            android:checked="false"
+            android:icon="@drawable/ic_helpline"
+            android:title="Helpline" />
+        <item
+            android:id="@+id/contact_us"
+            android:checked="false"
+            android:icon="@drawable/ic_contact_us"
+            android:title="Contact us" />
+
+        <item
+            android:id="@+id/share"
+            android:checked="false"
+            android:icon="@drawable/ic_share"
+            android:title="Share" />
+        <item
+            android:id="@+id/sync"
+            android:checked="false"
+            android:icon="@drawable/sync"
+            android:title="Sync" />
+
+
+    </group>
+</menu>

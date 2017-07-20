@@ -1,0 +1,10 @@
+<!--Styleable attribute required for pass in text size and text color-->
+<resources>
+    <declare-styleable name="SeekBarWithHint">
+        <attr name="hint_text_size" format="dimension"/>
+        <attr name="hint_text_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="ShimmerView">
+        <attr name="reflectionColor" format="color"/>
+    </declare-styleable>
+</resources>

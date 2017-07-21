@@ -1,9 +1,7 @@
 package com.algorelpublic.zambia.adapter;
 
 import android.content.Context;
-import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,6 @@ import android.widget.TextView;
 
 import com.algorelpublic.zambia.R;
 import com.algorelpublic.zambia.model.HelpLineModel;
-import com.algorelpublic.zambia.model.SearchResultModel;
 
 import java.util.ArrayList;
 
@@ -32,7 +29,7 @@ public class AdapterHelpline extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
 
-        private TextView tvContactNumber, tvTitle, tvAddress;
+        private TextView tvContactNumber, tvTitle, tvAddress, tvWeb;
 
 
         public ItemViewHolder(View view) {
@@ -40,6 +37,7 @@ public class AdapterHelpline extends RecyclerView.Adapter<RecyclerView.ViewHolde
             tvContactNumber = (TextView) view.findViewById(R.id.tvContactNumber);
             tvAddress = (TextView) view.findViewById(R.id.tvAddress);
             tvTitle = (TextView) view.findViewById(R.id.tvTitle);
+            tvWeb = (TextView) view.findViewById(R.id.tvWeb);
         }
     }
 
@@ -57,6 +55,7 @@ public class AdapterHelpline extends RecyclerView.Adapter<RecyclerView.ViewHolde
         try {
             holder.tvContactNumber.setText(mList.get(0).contactNo);
             holder.tvTitle.setText(mList.get(0).title);
+            holder.tvWeb.setText(mList.get(0).website);
             holder.tvAddress.setText(mList.get(0).address + ", " + mList.get(0).city
                     + ", " + mList.get(0).country);
 

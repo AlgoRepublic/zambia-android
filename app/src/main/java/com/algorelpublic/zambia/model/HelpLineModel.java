@@ -53,6 +53,9 @@ public class HelpLineModel {
         @SerializedName("contact_no")
         public String contactNo;
 
+        @SerializedName("website")
+        public String website;
+
 
     }
 

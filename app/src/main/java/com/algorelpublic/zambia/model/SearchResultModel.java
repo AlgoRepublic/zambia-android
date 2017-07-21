@@ -63,20 +63,28 @@ public class SearchResultModel {
         @SerializedName("step_5_id")
         public String step_5_id;
 
+        @SerializedName("step_6_id")
+        public String step_6_id;
         @SerializedName("step_6_name")
         public String step_6_name;
 
         @SerializedName("step_7_id")
         public String step_7_id;
 
+        @SerializedName("step_8_id")
+        public String step_8_id;
         @SerializedName("step_8_name")
         public String step_8_name;
 
+        @SerializedName("step_9_id")
+        public String step_9_id;
         @SerializedName("step_9_name")
         public String step_9_name;
 
         @SerializedName("step_10_id")
         public String step_10_id;
+        @SerializedName("step_10_name")
+        public String step_10_name;
 
         @SerializedName("patient_name")
         public String patient_name;

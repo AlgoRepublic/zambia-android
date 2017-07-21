@@ -137,10 +137,10 @@ public class AdvanceSearchFragment extends BaseFragment implements View.OnClickL
                     Toast.makeText(getActivity(), "Please Select No. of persons", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                ((ZambiaMain) getActivity()).callFragmentWithReplace(R.id.container, AdvanceSearchDetailFragment.newInstance(noOfPersons), "");
+                ((ZambiaMain) getActivity()).callFragmentWithReplace(R.id.container, AdvanceSearchStepsFragment.newInstance(noOfPersons), "");
                 break;
             case R.id.btnSkip:
-                ((ZambiaMain) getActivity()).callFragmentWithReplace(R.id.container, AdvanceSearchDetailFragment.newInstance("1"), "");
+                ((ZambiaMain) getActivity()).callFragmentWithReplace(R.id.container, AdvanceSearchStepsFragment.newInstance("1"), "");
 
                 break;
         }
@@ -152,11 +152,11 @@ public class AdvanceSearchFragment extends BaseFragment implements View.OnClickL
         progress = ((int) Math.round(progress / stepSize)) * stepSize;
         seekBar.setProgress(progress);
         noOfPersons = String.valueOf(progress);
-        setNoOfPersons();
+        setNoOfPersons(noOfPersons);
         Log.d("radio", noOfPersons);
     }
 
-    private void setNoOfPersons() {
+    public void setNoOfPersons(String noOfPersons) {
         switch (noOfPersons) {
             case "0":
                 ivPerson1.setImageResource(R.drawable.un_selected);

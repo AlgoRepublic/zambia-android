@@ -117,7 +117,6 @@ public class SearchResultFragment extends BaseFragment implements View.OnClickLi
                     searchList.add(null);
                     isItemAdded = false;
                 }
-
                 break;
             case 2:
                 for (int i = 0; i < searchResultModel.resultsList.size(); i++) {
@@ -134,7 +133,6 @@ public class SearchResultFragment extends BaseFragment implements View.OnClickLi
                     searchList.add(null);
                     isItemAdded = false;
                 }
-
                 break;
             case 3:
                     for (int i = 0; i < searchResultModel.resultsList.size(); i++) {
@@ -152,7 +150,6 @@ public class SearchResultFragment extends BaseFragment implements View.OnClickLi
                     searchList.add(null);
                     isItemAdded = false;
                 }
-
                 break;
             case 4:
                 try{
@@ -175,9 +172,132 @@ public class SearchResultFragment extends BaseFragment implements View.OnClickLi
                     searchList.add(null);
                     isItemAdded = false;
                 }
-
                 break;
-
+            case 5:
+                try{
+                    for (int i = 0; i < searchResultModel.resultsList.size(); i++) {
+                        if (searchResultModel.resultsList.get(i).step_1_id.equalsIgnoreCase(personDataList.get(0))
+                                && searchResultModel.resultsList.get(i).step_2_id.equalsIgnoreCase(personDataList.get(1))
+                                && searchResultModel.resultsList.get(i).step_3_id.equalsIgnoreCase(personDataList.get(2))
+                                && searchResultModel.resultsList.get(i).step_4_id.equalsIgnoreCase(personDataList.get(3))
+                                && searchResultModel.resultsList.get(i).step_5_id.equalsIgnoreCase(personDataList.get(4))) {
+                            searchList.add(searchResultModel.resultsList.get(i));
+                            isItemAdded = true;
+                            break;
+                        }
+                    }
+                }catch (NullPointerException e){
+                    searchList.add(null);
+                }
+                if (isItemAdded) {
+                    isItemAdded = false;
+                } else {
+                    searchList.add(null);
+                    isItemAdded = false;
+                }
+                break;
+            case 6:
+                try{
+                    for (int i = 0; i < searchResultModel.resultsList.size(); i++) {
+                        if (searchResultModel.resultsList.get(i).step_1_id.equalsIgnoreCase(personDataList.get(0))
+                                && searchResultModel.resultsList.get(i).step_2_id.equalsIgnoreCase(personDataList.get(1))
+                                && searchResultModel.resultsList.get(i).step_3_id.equalsIgnoreCase(personDataList.get(2))
+                                && searchResultModel.resultsList.get(i).step_4_id.equalsIgnoreCase(personDataList.get(3))
+                                && searchResultModel.resultsList.get(i).step_5_id.equalsIgnoreCase(personDataList.get(4))
+                                && searchResultModel.resultsList.get(i).step_6_id.equalsIgnoreCase(personDataList.get(5))) {
+                            searchList.add(searchResultModel.resultsList.get(i));
+                            isItemAdded = true;
+                            break;
+                        }
+                    }
+                }catch (NullPointerException e){
+                    searchList.add(null);
+                }
+                if (isItemAdded) {
+                    isItemAdded = false;
+                } else {
+                    searchList.add(null);
+                    isItemAdded = false;
+                }
+                break;
+            case 7:
+                try{
+                    for (int i = 0; i < searchResultModel.resultsList.size(); i++) {
+                        if (searchResultModel.resultsList.get(i).step_1_id.equalsIgnoreCase(personDataList.get(0))
+                                && searchResultModel.resultsList.get(i).step_2_id.equalsIgnoreCase(personDataList.get(1))
+                                && searchResultModel.resultsList.get(i).step_3_id.equalsIgnoreCase(personDataList.get(2))
+                                && searchResultModel.resultsList.get(i).step_4_id.equalsIgnoreCase(personDataList.get(3))
+                                && searchResultModel.resultsList.get(i).step_5_id.equalsIgnoreCase(personDataList.get(4))
+                                && searchResultModel.resultsList.get(i).step_6_id.equalsIgnoreCase(personDataList.get(5))
+                                && searchResultModel.resultsList.get(i).step_7_id.equalsIgnoreCase(personDataList.get(6))) {
+                            searchList.add(searchResultModel.resultsList.get(i));
+                            isItemAdded = true;
+                            break;
+                        }
+                    }
+                }catch (NullPointerException e){
+                    searchList.add(null);
+                }
+                if (isItemAdded) {
+                    isItemAdded = false;
+                } else {
+                    searchList.add(null);
+                    isItemAdded = false;
+                }
+                break;
+            case 8:
+                try{
+                    for (int i = 0; i < searchResultModel.resultsList.size(); i++) {
+                        if (searchResultModel.resultsList.get(i).step_1_id.equalsIgnoreCase(personDataList.get(0))
+                                && searchResultModel.resultsList.get(i).step_2_id.equalsIgnoreCase(personDataList.get(1))
+                                && searchResultModel.resultsList.get(i).step_3_id.equalsIgnoreCase(personDataList.get(2))
+                                && searchResultModel.resultsList.get(i).step_4_id.equalsIgnoreCase(personDataList.get(3))
+                                && searchResultModel.resultsList.get(i).step_5_id.equalsIgnoreCase(personDataList.get(4))
+                                && searchResultModel.resultsList.get(i).step_6_id.equalsIgnoreCase(personDataList.get(5))
+                                && searchResultModel.resultsList.get(i).step_7_id.equalsIgnoreCase(personDataList.get(6))
+                                && searchResultModel.resultsList.get(i).step_8_id.equalsIgnoreCase(personDataList.get(7))) {
+                            searchList.add(searchResultModel.resultsList.get(i));
+                            isItemAdded = true;
+                            break;
+                        }
+                    }
+                }catch (NullPointerException e){
+                    searchList.add(null);
+                }
+                if (isItemAdded) {
+                    isItemAdded = false;
+                } else {
+                    searchList.add(null);
+                    isItemAdded = false;
+                }
+                break;
+            case 9:
+                try{
+                    for (int i = 0; i < searchResultModel.resultsList.size(); i++) {
+                        if (searchResultModel.resultsList.get(i).step_1_id.equalsIgnoreCase(personDataList.get(0))
+                                && searchResultModel.resultsList.get(i).step_2_id.equalsIgnoreCase(personDataList.get(1))
+                                && searchResultModel.resultsList.get(i).step_3_id.equalsIgnoreCase(personDataList.get(2))
+                                && searchResultModel.resultsList.get(i).step_4_id.equalsIgnoreCase(personDataList.get(3))
+                                && searchResultModel.resultsList.get(i).step_5_id.equalsIgnoreCase(personDataList.get(4))
+                                && searchResultModel.resultsList.get(i).step_6_id.equalsIgnoreCase(personDataList.get(5))
+                                && searchResultModel.resultsList.get(i).step_7_id.equalsIgnoreCase(personDataList.get(6))
+                                && searchResultModel.resultsList.get(i).step_8_id.equalsIgnoreCase(personDataList.get(7))
+                                && searchResultModel.resultsList.get(i).step_9_id.equalsIgnoreCase(personDataList.get(8))) {
+                            searchList.add(searchResultModel.resultsList.get(i));
+                            isItemAdded = true;
+                            break;
+                        }
+                    }
+                }catch (NullPointerException e){
+                    searchList.add(null);
+                }
+                if (isItemAdded) {
+                    isItemAdded = false;
+                } else {
+                    searchList.add(null);
+                    isItemAdded = false;
+                }
+                break;
         }
 
     }

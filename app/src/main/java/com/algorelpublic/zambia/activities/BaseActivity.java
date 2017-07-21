@@ -334,7 +334,19 @@ public class BaseActivity extends AppCompatActivity {
             transaction
                     .commit();
     }
-
+    public void addFragmentWithReplace(int containerId, Fragment fragment, String tag) {
+        android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .add(containerId, fragment, tag)
+                .setCustomAnimations(R.anim.slide_in_enter, R.anim.slide_in_exit,
+                        R.anim.slide_pop_enter, R.anim.slide_pop_exit);
+        if (tag != null)
+            transaction.addToBackStack(tag)
+                    .commit();
+        else
+            transaction
+                    .commit();
+    }
     public void callFragment(int containerId, Fragment fragment, String tag) {
         android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction()

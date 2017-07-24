@@ -133,6 +133,8 @@ public class AdvanceSearchFragment extends BaseFragment implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnNext:
+                AdvanceSearchStepsFragment.queryList.clear();
+                AdvanceSearchStepsFragment.selectionList.clear();
                 if (noOfPersons.equalsIgnoreCase("0")) {
                     Toast.makeText(getActivity(), "Please Select No. of persons", Toast.LENGTH_SHORT).show();
                     return;
@@ -140,8 +142,9 @@ public class AdvanceSearchFragment extends BaseFragment implements View.OnClickL
                 ((ZambiaMain) getActivity()).callFragmentWithReplace(R.id.container, AdvanceSearchStepsFragment.newInstance(noOfPersons), "");
                 break;
             case R.id.btnSkip:
+                AdvanceSearchStepsFragment.queryList.clear();
+                AdvanceSearchStepsFragment.selectionList.clear();
                 ((ZambiaMain) getActivity()).callFragmentWithReplace(R.id.container, AdvanceSearchStepsFragment.newInstance("1"), "");
-
                 break;
         }
 

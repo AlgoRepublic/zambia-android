@@ -6,7 +6,86 @@
     android:layout_centerVertical="true"
     android:background="@drawable/background"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/llPeople"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spNoOfPersons"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:gravity="center">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btnPerson1"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/cicle_bg_selected"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+
+            <Button
+                android:id="@+id/btnPerson2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/circle_bg"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+
+            <Button
+                android:id="@+id/btnPerson3"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/circle_bg"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+
+            <Button
+                android:id="@+id/btnPerson4"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/circle_bg"
+                android:gravity="center"
+                android:text="4"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+
+            <Button
+                android:id="@+id/btnPerson5"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circle_bg"
+                android:gravity="center"
+                android:text="5"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
     <LinearLayout
         android:id="@+id/llPerson"
         android:layout_width="match_parent"
@@ -21,12 +100,14 @@
 
             <TextView
                 android:id="@+id/tvServices"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="70dp"
                 android:text="services are"
                 android:textAlignment="center"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:textColor="@android:color/white"
                 android:textSize="22dp" />
 
@@ -79,11 +160,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="70dp"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:gravity="center">
 
             <Button
@@ -95,7 +176,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_alignParentLeft="true"
                 android:textColor="@android:color/white"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/btnNext"
@@ -108,7 +189,7 @@
                 android:textColor="@android:color/white" />
 
             <Button
-                android:id="@+id/btnSearch"
+                android:id="@+id/btnAdvancesearch"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_bg"

@@ -1,13 +1,12 @@
 package com.algorelpublic.zambia.fragments;
 
-import android.net.http.LoggingEventHandler;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +21,9 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 import static android.widget.LinearLayout.VERTICAL;
+import static com.algorelpublic.zambia.fragments.AdvanceSearchStepsFragment.noOfPersons;
+import static com.algorelpublic.zambia.fragments.AdvanceSearchStepsFragment.queryList;
+import static com.algorelpublic.zambia.fragments.AdvanceSearchStepsFragment.selectionList;
 
 /**
  * Created by Adil Nazir on 16/07/2017.
@@ -308,6 +310,16 @@ public class SearchResultFragment extends BaseFragment implements View.OnClickLi
         rvResults.setLayoutManager(new GridLayoutManager(getActivity(), 1, VERTICAL, false));
         rvResults.setHasFixedSize(true);
         rvResults.setAdapter(new AdapterResult(getActivity(), searchList));
+    }
+
+    public void allowBackPressed(){
+        noOfPersons = 0;
+        selectionList.clear();
+        queryList.clear();
+        FragmentManager fm = getActivity()
+                .getSupportFragmentManager();
+        fm.popBackStack ("AdvanceSearchFragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        callFragmentWithReplace(R.id.container, AdvanceSearchFragment.newInstance(), "AdvanceSearchFragment");
     }
 
 }

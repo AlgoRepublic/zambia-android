@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
@@ -8,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <View
             android:id="@+id/view"
@@ -16,30 +15,48 @@
             android:layout_height="1dp"
             android:background="@android:color/white" />
 
-
         <TextView
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="80dp"
             android:text="The number of individuals \nin my consultation are:"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="22dp" />
+            android:textSize="22sp" />
 
+
+
+
+        <SeekBar
+            android:id="@+id/spNoOfPersons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="40dp"
+            android:max="5"
+            android:maxHeight="2dip"
+            android:minHeight="2dip"
+            android:progress="5"
+            android:progressDrawable="@drawable/seekbar_progress"
+            android:thumb="@drawable/ic_circle" />
 
         <LinearLayout
             android:id="@+id/llPeople"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_below="@id/spNoOfPersons">
 
             <ImageView
                 android:id="@+id/ivPerson1"
@@ -53,7 +70,7 @@
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/selected_people" />
+                android:src="@drawable/un_selected" />
 
             <ImageView
                 android:id="@+id/ivPerson3"
@@ -76,23 +93,6 @@
                 android:src="@drawable/un_selected" />
 
         </LinearLayout>
-
-        <SeekBar
-            android:id="@+id/spNoOfPersons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/llPeople"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="40dp"
-            android:max="5"
-            android:maxHeight="2dip"
-            android:minHeight="2dip"
-            android:progress="5"
-            android:progressDrawable="@drawable/seekbar_progress"
-            android:thumb="@drawable/ic_circle" />
 
 
         <LinearLayout
@@ -132,7 +132,8 @@
             android:layout_height="match_parent"
             android:background="@android:color/white"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:id="@+id/linearLayout">
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -5,11 +5,9 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.algorelpublic.zambia.R;
 import com.algorelpublic.zambia.activities.ZambiaMain;
-import com.algorelpublic.zambia.model.SearchCriteriaModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +25,7 @@ public class AdvanceSearchStepsFragment extends BaseFragment {
     private HashMap<String,ArrayList<String>> personHash = new HashMap<>();
     public static ArrayList<String> selectionList = new ArrayList<>();
     public static ArrayList<ArrayList<String>> queryList = new ArrayList<>();
+
     public static AdvanceSearchStepsFragment newInstance(String persons) {
         noOfPersons = Integer.parseInt(persons);
         instance = new AdvanceSearchStepsFragment();
@@ -45,7 +44,7 @@ public class AdvanceSearchStepsFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_advance_search_steps, container, false);
         ((ZambiaMain) getActivity()).callFragmentWithReplace(R.id.steps_container,
-                AdvanceSearchAllStepsFragment.newInstance(null),"");
+                AdvanceSearchAllStepsFragment.newInstance(null),"AdvanceSearchStepsFragment");
 
         return view;
     }

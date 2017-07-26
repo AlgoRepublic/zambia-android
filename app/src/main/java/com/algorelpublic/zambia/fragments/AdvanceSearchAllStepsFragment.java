@@ -22,7 +22,11 @@ import com.algorelpublic.zambia.utils.Constants;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
+import static com.algorelpublic.zambia.fragments.AdvanceSearchStepsFragment.noOfPersons;
+import static com.algorelpublic.zambia.fragments.AdvanceSearchStepsFragment.queryList;
+import static com.algorelpublic.zambia.fragments.AdvanceSearchStepsFragment.selectionList;
+import static com.algorelpublic.zambia.fragments.AdvanceSearchStepsFragment.totalPersons;
 
 /**
  * Created by android on 7/21/17.
@@ -86,8 +90,8 @@ public class AdvanceSearchAllStepsFragment extends BaseFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_advance_search_child, container, false);
         init();
-        setPersonTabs(AdvanceSearchStepsFragment.noOfPersons);
-        setPersonsColor(AdvanceSearchStepsFragment.totalPersons-1);
+        setPersonTabs(noOfPersons);
+        setPersonsColor(totalPersons-1);
         addListener();
         serviceParentId = getArguments().getString("ParentID");
         Gson gson = new Gson();
@@ -140,12 +144,23 @@ public class AdvanceSearchAllStepsFragment extends BaseFragment
                 break;
             case R.id.btnPrev:
                 Log.e("DD","/"+getActivity().getSupportFragmentManager().getBackStackEntryCount());
-                if (getActivity().getSupportFragmentManager().getBackStackEntryCount()>2) {
+                if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 3) {
+                    if(selectionList.size() == 0){
+                        totalPersons--;
+                        serviceParentId = null;
+                        selectionList.addAll(queryList.get(queryList.size() - 1));
+                        selectionList.remove(selectionList.size() - 1);
+                        queryList.remove(queryList.size() - 1);
+                    }
+                    else if(selectionList.size() > 0) {
+                        serviceParentId = selectionList.get(selectionList.size() - 1);
+                        selectionList.remove(selectionList.size() - 1);
+                    }
                     getActivity().onBackPressed();
                 }else{
-                    AdvanceSearchStepsFragment.totalPersons=1;
-                    AdvanceSearchStepsFragment.selectionList.clear();
-                    AdvanceSearchStepsFragment.queryList.clear();
+                    totalPersons = 1;
+                    selectionList.clear();
+                    queryList.clear();
                 }
                 break;
             case R.id.btnAdvancesearch:
@@ -154,11 +169,11 @@ public class AdvanceSearchAllStepsFragment extends BaseFragment
         }
     }
     private void searchClick() {
-        AdvanceSearchStepsFragment.selectionList.add(serviceParentId);
-        if (AdvanceSearchStepsFragment.selectionList.size()>0) {
-            AdvanceSearchStepsFragment.queryList.add(AdvanceSearchStepsFragment.selectionList);
+        selectionList.add(serviceParentId);
+        if (selectionList.size() > 0) {
+            queryList.add(selectionList);
         }
-        callFragment(R.id.container, SearchResultFragment.newInstance(AdvanceSearchStepsFragment.queryList), "");
+        callFragment(R.id.container, SearchResultFragment.newInstance(queryList), "SearchResultFragment");
     }
     //Setting Spinners
     private void populateView(String parentId) {
@@ -175,7 +190,7 @@ public class AdvanceSearchAllStepsFragment extends BaseFragment
                 }
             }
             if (servicesList.size()>0)
-            setSpinnerAdapter(servicesList);
+                setSpinnerAdapter(servicesList);
         }
     }
     //SET SPINNER ADAPTER
@@ -190,25 +205,26 @@ public class AdvanceSearchAllStepsFragment extends BaseFragment
     }
 
     private void btnNextPress(View v) {
-       // Log.e("DDD",childList.size()+"/"+totalPersons+"/"+serviceParentId);
-        if (AdvanceSearchStepsFragment.totalPersons < AdvanceSearchStepsFragment.noOfPersons) {
+        // Log.e("DDD",childList.size()+"/"+totalPersons+"/"+serviceParentId);
+        selectionList.add(serviceParentId);
+        if (totalPersons < noOfPersons) {
             if (childList.size() == 0) {
                 ((ZambiaMain) getActivity()).addFragmentWithReplace(R.id.steps_container,
                         AdvanceSearchAllStepsFragment.newInstance(null), "AdvanceSearchDetailFragment");
-                if (AdvanceSearchStepsFragment.selectionList.size()>0) {
-                    AdvanceSearchStepsFragment.queryList.add(AdvanceSearchStepsFragment.selectionList);
-                    AdvanceSearchStepsFragment.selectionList.clear();
+                if (selectionList.size()>0) {
+                    ArrayList<String> tempArray = new ArrayList<>();
+                    tempArray.addAll(selectionList);
+                    queryList.add(tempArray);
+                    selectionList.clear();
                 }
-                AdvanceSearchStepsFragment.totalPersons++;
+                totalPersons++;
 //                setPersonsColor
 //                        (AdvanceSearchStepsFragment.totalPersons-1);
             }else{
-                AdvanceSearchStepsFragment.selectionList.add(serviceParentId);
                 ((ZambiaMain) getActivity()).addFragmentWithReplace(R.id.steps_container,
                         AdvanceSearchAllStepsFragment.newInstance(serviceParentId), "AdvanceSearchDetailFragment");
             }
         }else{
-            AdvanceSearchStepsFragment.selectionList.add(serviceParentId);
             ((ZambiaMain) getActivity()).addFragmentWithReplace(R.id.steps_container,
                     AdvanceSearchAllStepsFragment.newInstance(serviceParentId), "AdvanceSearchDetailFragment");
         }
@@ -231,14 +247,15 @@ public class AdvanceSearchAllStepsFragment extends BaseFragment
             btnAdvancesearch.setVisibility(View.INVISIBLE);
             btnPrev.setVisibility(View.VISIBLE);
         } else {
-            if (AdvanceSearchStepsFragment.noOfPersons == AdvanceSearchStepsFragment.totalPersons) {
+            if (noOfPersons == totalPersons) {
                 btnNext.setVisibility(View.INVISIBLE);
                 btnPrev.setVisibility(View.VISIBLE);
                 btnAdvancesearch.setVisibility(View.VISIBLE);
-            }else if (AdvanceSearchStepsFragment.noOfPersons > 1) {
+            }else if (noOfPersons > 1) {
                 btnNext.setVisibility(View.VISIBLE);
                 btnAdvancesearch.setVisibility(View.INVISIBLE);
                 btnPrev.setVisibility(View.VISIBLE);
+//                tvServices.setText("For "+AdvanceSearchStepsFragment.noOfPersons+" individual, I am searching for information on:");
             }
         }
     }

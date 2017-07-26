@@ -15,8 +15,6 @@
         android:id="@+id/steps_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="70dp"
-        android:layout_below="@+id/llPeople"
-        android:layout_marginTop="10dp"/>
+        android:layout_below="@+id/llPeople" />
 
 </RelativeLayout>

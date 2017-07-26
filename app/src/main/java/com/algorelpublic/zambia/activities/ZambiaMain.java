@@ -2,18 +2,13 @@ package com.algorelpublic.zambia.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -29,9 +24,9 @@ import com.algorelpublic.zambia.fragments.FavouriteFragment;
 import com.algorelpublic.zambia.fragments.GuidelinesFragment;
 import com.algorelpublic.zambia.fragments.HelpLineFragment;
 import com.algorelpublic.zambia.fragments.MedicineFragment;
+import com.algorelpublic.zambia.fragments.SearchResultFragment;
 import com.algorelpublic.zambia.fragments.ToolsFragment;
 import com.algorelpublic.zambia.utils.Constants;
-import com.androidquery.AQuery;
 
 public class ZambiaMain extends BaseActivity implements View.OnClickListener {
 
@@ -126,6 +121,22 @@ public class ZambiaMain extends BaseActivity implements View.OnClickListener {
         startActivity(Intent.createChooser(share, getString(R.string.app_name)));
     }
 
+    /**
+     * Take care of popping the fragment back stack or finishing the activity
+     * as appropriate.
+     */
+    @Override
+    public void onBackPressed() {
+        final SearchResultFragment fragment = (SearchResultFragment) getSupportFragmentManager().findFragmentByTag("SearchResultFragment");
+        if(fragment != null){
+            fragment.allowBackPressed();
+        }else{
+            super.onBackPressed();
+        }
+
+
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -140,7 +151,7 @@ public class ZambiaMain extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.advance_search:
                 resetMenu(v);
-                callFragmentWithReplace(R.id.container, AdvanceSearchFragment.newInstance(), null);
+                callFragmentWithReplace(R.id.container, AdvanceSearchFragment.newInstance(), "AdvanceSearchFragment");
                 break;
             case R.id.tools:
                 resetMenu(v);

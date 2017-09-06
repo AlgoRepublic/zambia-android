@@ -125,7 +125,7 @@ public class SearchResultFragment extends BaseFragment implements View.OnClickLi
             case 2:
                 for (int i = 0; i < searchResultModel.resultsList.size(); i++) {
                     if (searchResultModel.resultsList.get(i).step_1_id.equalsIgnoreCase(personDataList.get(0))
-                            && searchResultModel.resultsList.get(i).step_3_id.equalsIgnoreCase(personDataList.get(1))) {
+                            && searchResultModel.resultsList.get(i).step_2_id.equalsIgnoreCase(personDataList.get(1))) {
                         searchList.add(searchResultModel.resultsList.get(i));
                         isItemAdded = true;
                         break;

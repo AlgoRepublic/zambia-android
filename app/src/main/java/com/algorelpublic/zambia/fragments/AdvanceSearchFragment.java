@@ -36,7 +36,7 @@ public class AdvanceSearchFragment extends BaseFragment implements View.OnClickL
     ArrayList<SearchCriteriaModel.Criteria> servicesList;
     private SeekBar spNoOfPersons;
     private int stepSize = 1;
-    private String noOfPersons;
+    private String noOfPersons = "";
     private ImageView ivPerson1, ivPerson2, ivPerson3, ivPerson4, ivPerson5;
     private Button btnSkip, btnNext;
 

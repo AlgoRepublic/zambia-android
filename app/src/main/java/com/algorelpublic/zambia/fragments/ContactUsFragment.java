@@ -26,7 +26,7 @@ public class ContactUsFragment extends BaseFragment implements View.OnClickListe
     public static ContactUsFragment instance;
     private View view;
     private Button btnSubmit;
-    private EditText edtFeedBack, edtName, edtEmail, edtContactNumber;
+    private EditText edtName, edtSurName, edtEmail, edtContactNumber, edtEnquiry, edtHealthFacility;
     private APIService service;
 
     public static ContactUsFragment newInstance() {
@@ -61,9 +61,13 @@ public class ContactUsFragment extends BaseFragment implements View.OnClickListe
 
     private void init() {
         edtName = (EditText) view.findViewById(R.id.edtName);
-        edtEmail = (EditText) view.findViewById(R.id.edtEmail);
+        edtSurName = (EditText) view.findViewById(R.id.edtSurName);
         edtContactNumber = (EditText) view.findViewById(R.id.edtContactNumber);
-        edtFeedBack = (EditText) view.findViewById(R.id.edtFeedBack);
+        edtEmail = (EditText) view.findViewById(R.id.edtEmail);
+        edtEnquiry = (EditText) view.findViewById(R.id.edtEnquiry);
+        edtHealthFacility = (EditText) view.findViewById(R.id.edtHealthFacility);
+//        edtDistrict = (EditText) view.findViewById(R.id.edtDistrict);
+//        edtProvince = (EditText) view.findViewById(R.id.edtProvince);
         btnSubmit = (Button) view.findViewById(R.id.btnSubmit);
     }
 
@@ -109,17 +113,22 @@ public class ContactUsFragment extends BaseFragment implements View.OnClickListe
             edtEmail.setError(getString(R.string.invalid));
             return;
         }
-        if (isContentNull(edtFeedBack.getText().toString())) {
-            edtFeedBack.requestFocus();
-            edtFeedBack.setError(getString(R.string.required));
+        if (isContentNull(edtContactNumber.getText().toString())) {
+            edtContactNumber.requestFocus();
+            edtContactNumber.setError(getString(R.string.required));
+            return;
+        }
+        if (isContentNull(edtEnquiry.getText().toString())) {
+            edtEnquiry.requestFocus();
+            edtEnquiry.setError(getString(R.string.required));
             return;
         }
 
         Util.hidekeyPad(getContext(), view);
         service = new APIService(getActivity());
-        service.submitFeedback(edtName.getText().toString(), edtEmail.getText().toString(),
-                edtContactNumber.getText().toString(), edtFeedBack.getText().toString(),
-                true, new CallBack(ContactUsFragment.this, "ContactUs"));
+        service.submitFeedback(edtName.getText().toString(), edtSurName.getText().toString(), edtEmail.getText().toString(),
+                edtContactNumber.getText().toString(), edtEnquiry.getText().toString(),
+                edtHealthFacility.getText().toString(), "", "", true, new CallBack(ContactUsFragment.this, "ContactUs"));
     }
 
 

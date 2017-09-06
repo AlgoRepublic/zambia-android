@@ -12,9 +12,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:singleLine="true"
         android:textColor="@android:color/white"
-        android:textSize="20sp"></TextView>
+        android:textSize="16sp"></TextView>
 
     <View
         android:layout_width="wrap_content"

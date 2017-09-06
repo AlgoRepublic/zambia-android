@@ -80,13 +80,24 @@ public class APIService extends BaseService {
         Log.e("Url", Url);
     }
 
-    public void submitFeedback(String name, String email, String contactNumber, String feeback, boolean showProgress, CallBack obj) {
+    public void submitFeedback(String name, String surname, String email, String contactNumber, String enquiry, String healthFacility, String district, String province, boolean showProgress, CallBack obj) {
         String Url = Constants.FEEDBACK_URL;
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("name", name);
         params.put("email", email);
         params.put("contact_number", contactNumber);
-        params.put("feedback", feeback);
+        params.put("surname", surname);
+        params.put("health_facility", healthFacility);
+        params.put("district", district);
+        params.put("province", province);
+        params.put("feedback", enquiry);
+
+        http:
+//91.194.91.72:3000/api/feedback/create?
+        // name=ali&email=alisheikh4021@gmail.com&contact_number=5454544545&feedback=amazing&
+        // surname=sheikh&health_facility=yes&district=lahore&province=punjab
+
+
         this.post(Url, params, obj, GeneralModel.getInstance(), showProgress);
         Log.e("Url", Url);
     }

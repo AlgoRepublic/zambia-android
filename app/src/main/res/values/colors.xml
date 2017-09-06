@@ -7,5 +7,6 @@
     <color name="theme_red">#e16068</color>
     <color name="theme_green">#3e8841</color>
     <color name="color_light_gray">#22000000</color>
+    <color name="colorRed">#e15f67</color>
 
 </resources>

@@ -1,5 +1,7 @@
 package com.algorelpublic.zambia.activities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
@@ -34,6 +37,7 @@ public class ZambiaMain extends BaseActivity implements View.OnClickListener {
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     public static CheckBox favouriteCheckBox;
+    public static AppCompatActivity activity;
     private ShimmerRadioButton advance_search, guideline, medicines,
             about, tools, add_favorite, helpline, contact_us, share, sync;
 
@@ -45,6 +49,8 @@ public class ZambiaMain extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zambia_main);
         setToolbar();
+        activity = ZambiaMain.this;
+
     }
 
     public void setToolbar() {
@@ -128,9 +134,9 @@ public class ZambiaMain extends BaseActivity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         final SearchResultFragment fragment = (SearchResultFragment) getSupportFragmentManager().findFragmentByTag("SearchResultFragment");
-        if(fragment != null){
+        if (fragment != null) {
             fragment.allowBackPressed();
-        }else{
+        } else {
             super.onBackPressed();
         }
 
@@ -151,7 +157,7 @@ public class ZambiaMain extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.advance_search:
                 resetMenu(v);
-                callFragmentWithReplace(R.id.container, AdvanceSearchFragment.newInstance(), "AdvanceSearchFragment");
+                callFragmentWithReplace(R.id.container, AdvanceSearchFragment.newInstance(), null);
                 break;
             case R.id.tools:
                 resetMenu(v);

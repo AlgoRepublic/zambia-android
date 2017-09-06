@@ -21,13 +21,14 @@ public class AdvanceSearchStepsFragment extends BaseFragment {
     public static AdvanceSearchStepsFragment instance;
     public static int noOfPersons;
     private View view;
-    public static int totalPersons=1;
-    private HashMap<String,ArrayList<String>> personHash = new HashMap<>();
+    public static int totalPersons = 1;
+    private HashMap<String, ArrayList<String>> personHash = new HashMap<>();
     public static ArrayList<String> selectionList = new ArrayList<>();
     public static ArrayList<ArrayList<String>> queryList = new ArrayList<>();
 
     public static AdvanceSearchStepsFragment newInstance(String persons) {
         noOfPersons = Integer.parseInt(persons);
+        totalPersons = 1;
         instance = new AdvanceSearchStepsFragment();
         return instance;
     }
@@ -44,7 +45,7 @@ public class AdvanceSearchStepsFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_advance_search_steps, container, false);
         ((ZambiaMain) getActivity()).callFragmentWithReplace(R.id.steps_container,
-                AdvanceSearchAllStepsFragment.newInstance(null),"AdvanceSearchStepsFragment");
+                AdvanceSearchAllStepsFragment.newInstance(null), null);
 
         return view;
     }
